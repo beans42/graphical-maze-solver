@@ -1,5 +1,6 @@
 #include "includes.hpp"
 #include "dijkstra.hpp"
+#include "texture_manip.hpp"
 
 #pragma region imgui_stuff
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
