@@ -101,6 +101,9 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nC
 	
 	bool pic_chosen = false;
 	
+	bool path_value = false;
+	float path_cols[3] = { 0.f, 1.f, 0.f };
+
 	bool cost_map = false;
 	point_t start = { 0, 0 }, end = { 0, 0 };
 
@@ -172,6 +175,15 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nC
 				ImGui::SliderInt("end x      ", &end.x,   0, pic_width  - 1);
 				ImGui::SliderInt("end y      ", &end.y,   0, pic_height - 1);
 
+				if (!cost_map) {
+					ImGui::Checkbox("path color based on value", &path_value);
+
+					if (!path_value) {
+						ImGui::SameLine();
+						ImGui::ColorEdit3("path color", &path_cols[0]);
+					}
+				}
+
 				ImGui::Checkbox("draw cost map?", &cost_map);
 				ImGui::SameLine();
 				if (ImGui::Button("solve")) {
@@ -189,7 +201,9 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nC
 						std::vector<std::tuple<int, int, D3DCOLOR>> points;
 						for (auto& point : temp) {
 							int r = ((float)std::get<2>(point) / (float)max_path_value) * 255.f;
-							points.push_back({ std::get<0>(point), std::get<1>(point), D3DCOLOR_RGBA(0xFF - r, r, 0x00, 0xFF) });
+							points.push_back({ std::get<0>(point), std::get<1>(point), path_value ?
+								D3DCOLOR_RGBA(0xFF - r, r, 0x00, 0xFF) :
+								D3DCOLOR_RGBA((int)(path_cols[0] * 255.f), (int)(path_cols[1] * 255.f), (int)(path_cols[2] * 255.f), 0xFF) });
 						}
 						tex->darken_background();
 						tex->draw_points(points);
