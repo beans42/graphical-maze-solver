@@ -16,3 +16,12 @@ dependencies:
 credits:
 
 -[imgui](https://github.com/ocornut/imgui)
+
+
+some screenshots:
+
+![solid](https://i.imgur.com/tMB9yyN.png "solid path color example")
+
+![value_based](https://i.imgur.com/u1FLptr.png "value based path color example")
+
+![cost](https://i.imgur.com/i5U9z9b.png "cost map example")
