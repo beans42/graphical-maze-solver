@@ -20,8 +20,8 @@ credits:
 
 some screenshots:
 
-![solid](https://i.imgur.com/tMB9yyN.png "solid path color example")
+![solid](https://github.com/beans42/graphical-maze-solver/blob/master/sample%20mazes/demo/solid_path.png "solid path color example")
 
-![value_based](https://i.imgur.com/u1FLptr.png "value based path color example")
+![value_based](https://github.com/beans42/graphical-maze-solver/blob/master/sample%20mazes/demo/value_based_path_color.png "value based path color example")
 
-![cost](https://i.imgur.com/i5U9z9b.png "cost map example")
+![cost](https://github.com/beans42/graphical-maze-solver/blob/master/sample%20mazes/demo/cost_map.png "cost map example")
